@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct KnobView: View {
-    let icon: String 
 
     var body: some View {
         ZStack {
             Circle()
                 .fill(Color.white)
-                .frame(width: 60, height: 60)
-                .shadow(radius: 5)
+                .frame(width: 90, height: 90)
+                .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0.0, y: 4)
+            
+            Circle()
+                .stroke(.gray, lineWidth: 0.2)
+                .frame(width: 75, height: 75)
 
-            Image(systemName: icon)
+            // Image(systemName: icon)
                 .foregroundColor(.gray)
                 .font(.title)
         }
@@ -26,6 +29,6 @@ struct KnobView: View {
 
 struct KnobView_Previews: PreviewProvider {
     static var previews: some View {
-        KnobView(icon: "arrow.left.and.right")
+        KnobView()
     }
 }

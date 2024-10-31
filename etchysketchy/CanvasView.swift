@@ -16,8 +16,8 @@ struct CanvasView: View {
             context.stroke(path, with: .color(.black), lineWidth: 2)
         }
         .background(Color.white)
-        .frame(width: 300, height: 550)
-        .cornerRadius(20)
+        .frame(width: 350, height: 550)
+        .cornerRadius(30)
         .padding()
     }
 }

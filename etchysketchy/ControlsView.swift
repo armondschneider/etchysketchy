@@ -10,18 +10,28 @@ import SwiftUI
 struct ControlsView: View {
     @State private var xOffset: Double = 0
     @State private var yOffset: Double = 0
-
+    
     var body: some View {
         HStack(spacing: 80) {
-            KnobView(icon: "arrow.left.and.right")
-                .onTapGesture {
-                    // Add horizontal movement logic here
-                }
-
-            KnobView(icon: "arrow.up.and.down")
-                .onTapGesture {
-                    // Add vertical movement logic here
-                }
+            VStack {
+                Image("left-right")
+                Spacer()
+                       .frame(height: 20)
+                KnobView()
+                    .onTapGesture {
+                        // Add horizontal movement logic here
+                    }
+            }
+            
+            VStack {
+                Image("up-down")
+                Spacer()
+                       .frame(height: 20)
+                KnobView()
+                    .onTapGesture {
+                        // Add vertical movement logic here
+                    }
+            }
         }
     }
 }
