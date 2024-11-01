@@ -7,17 +7,20 @@
 
 import SwiftUI
 
-struct CanvasView: View {
-    @State private var path = Path()
-    @State private var currentPoint = CGPoint(x: 150, y: 200)
+class CanvasView: ObservableObject {
+    @Published var path = Path()  // Publish changes to path
+    @Published var currentPoint = CGPoint(x: 150, y: 200)  // Start point
 
-    var body: some View {
-        Canvas { context, size in
-            context.stroke(path, with: .color(.black), lineWidth: 2)
-        }
-        .background(Color.white)
-        .frame(width: 350, height: 550)
-        .cornerRadius(30)
-        .padding()
+    // Function to update the path based on offset changes
+    func updatePath(xOffset: Double, yOffset: Double) {
+        let newPoint = CGPoint(
+            x: currentPoint.x + CGFloat(xOffset),
+            y: currentPoint.y + CGFloat(yOffset)
+        )
+        
+        path.move(to: currentPoint)
+        path.addLine(to: newPoint)
+        
+        currentPoint = newPoint  // Update current point
     }
 }

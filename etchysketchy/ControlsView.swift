@@ -8,28 +8,30 @@
 import SwiftUI
 
 struct ControlsView: View {
-    @State private var xOffset: Double = 0
-    @State private var yOffset: Double = 0
+    var onMove: (Double, Double) -> Void
+
+    @State private var xOffset: Double = 10
+    @State private var yOffset: Double = 10
     
     var body: some View {
         HStack(spacing: 80) {
             VStack {
                 Image("left-right")
                 Spacer()
-                       .frame(height: 20)
+                    .frame(height: 20)
                 KnobView()
                     .onTapGesture {
-                        // Add horizontal movement logic here
+                        onMove(xOffset, 0)  // Move horizontally
                     }
             }
             
             VStack {
                 Image("up-down")
                 Spacer()
-                       .frame(height: 20)
+                    .frame(height: 20)
                 KnobView()
                     .onTapGesture {
-                        // Add vertical movement logic here
+                        onMove(0, yOffset)  // Move vertically
                     }
             }
         }
@@ -38,6 +40,6 @@ struct ControlsView: View {
 
 struct ControlsView_Previews: PreviewProvider {
     static var previews: some View {
-        ControlsView()
+        ControlsView { _, _ in }
     }
 }
